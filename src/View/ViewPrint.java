@@ -17,29 +17,39 @@ public class ViewPrint {
     private JFileChooser fileChooser;
 
     public ViewPrint() {
+        // Uma nova instancia do controller
         controlador = new PrintController();
+
+        /* Inicializa um modelo DefaultListModel<String> e exibe a listaDeImpressao na JList */
         DefaultListModel<String> modelo = new DefaultListModel<>();
 
-        // Habilitar o botão de adicionar após a seleção do arquivo
+        // Habilitar o botão de imprimir após a seleção do arquivo
         botaoImprimir.setEnabled(false);
-        botaoLimpar.setEnabled(false);
 
+        // Inativa o botão limpar JList
+        botaoLimpar.setEnabled(false);
 
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Abre a escolha de arquivo no diretorio downloads
+                // Abre a seleção de arquivo no diretorio downloads
                 fileChooser = new JFileChooser("C:/Users/igl_m/Downloads");
+                // Permite apenas a seleção de arquivos
                 fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                // Aceita apenas arquivos com extensões "jpg" ou "jpeg"
                 fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imagens JPG", "jpg", "jpeg"));
 
+                // Se o usuário confirmar a escolha do arquivo procegue.
                 int returnValue = fileChooser.showOpenDialog(null);
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    // Obtém o arquivo que o usuário selecionou.
                     File selectedFile = fileChooser.getSelectedFile();
 
-                    // Habilitar o botão de adicionar após a seleção do arquivo
+                    // Habilitar o botão de imprimir após a seleção do arquivo
                     botaoImprimir.setEnabled(true);
                     botaoLimpar.setEnabled(false);
+                    // Adiciona o diretório do arquivo hà fila de impressão
+                    // View => Controller ADD => Model ADD
                     controlador.adicionarArquivo(selectedFile.getAbsolutePath());
                 }
             }
@@ -48,13 +58,19 @@ public class ViewPrint {
         botaoImprimir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Inativo o botão imprimir e ativo o botão limpar
                 botaoImprimir.setEnabled(false);
                 botaoLimpar.setEnabled(true);
 
+                // Limpa os dados da Jlist
                 modelo.clear();
+
+                //Para cada arquivo na fila de impressão, o método modelo.addElement(arquivo) adiciona o arquivo na lista.
+                // View => Controller GET => Model GET
                 for (String arquivo : controlador.getFilaDeImpressao()) {
                     modelo.addElement(arquivo);
                 }
+                // Atualiza a lista de impressão
                 listaDeImpressao.setModel(modelo);
             }
         });
