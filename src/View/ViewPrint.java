@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.swing.SwingUtilities;
 
 public class ViewPrint {
     private JPanel panelMain;
@@ -13,8 +14,10 @@ public class ViewPrint {
     private JButton botaoImprimir;
     private JList listaDeImpressao;
     private JButton botaoLimpar;
+    private JButton botaoNovaTela;
     private PrintController controlador;
     private JFileChooser fileChooser;
+    private File selectedFile;
 
     public ViewPrint() {
         // Uma nova instancia do controller
@@ -43,14 +46,14 @@ public class ViewPrint {
                 int returnValue = fileChooser.showOpenDialog(null);
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     // Obtém o arquivo que o usuário selecionou.
-                    File selectedFile = fileChooser.getSelectedFile();
+                    selectedFile = fileChooser.getSelectedFile();
 
                     // Habilitar o botão de imprimir após a seleção do arquivo
                     botaoImprimir.setEnabled(true);
                     botaoLimpar.setEnabled(false);
                     // Adiciona o diretório do arquivo hà fila de impressão
                     // View => Controller ADD => Model ADD
-                    controlador.adicionarArquivo(selectedFile.getAbsolutePath());
+                    //controlador.adicionarArquivo(selectedFile.getAbsolutePath());
                 }
             }
         });
@@ -64,6 +67,14 @@ public class ViewPrint {
 
                 // Limpa os dados da Jlist
                 modelo.clear();
+
+                // Adiciona o arquivo na lista de impressão
+                if (selectedFile != null) {
+                    controlador.adicionarArquivo(selectedFile.getAbsolutePath());
+
+                    // Limpa o comando, eliminando o buffer de memória
+                    selectedFile = null; // Isso "limpa" a referência ao arquivo, deixando a variável vazia
+                }
 
                 //Para cada arquivo na fila de impressão, o método modelo.addElement(arquivo) adiciona o arquivo na lista.
                 // View => Controller GET => Model GET
@@ -82,19 +93,39 @@ public class ViewPrint {
                 botaoImprimir.setEnabled(true);
             }
         });
+        botaoNovaTela.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Abre a primeira janela JFrame (Tela de Impressão - 01)
+                JFrame frame1 = new JFrame("Tela de Impressão - Filha");
+                frame1.setContentPane(new ViewPrint().panelMain);
+                frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame1.pack();
+                frame1.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame1.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //new ViewPrint();
-                JFrame frame = new JFrame("Tela de Impressão");
-                frame.setContentPane(new ViewPrint().panelMain);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                frame.setVisible(true);
+                // Abre a primeira janela JFrame (Tela de Impressão - 01)
+                JFrame frame1 = new JFrame("Tela de Impressão - 01");
+                frame1.setContentPane(new ViewPrint().panelMain);
+                frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame1.pack();
+                frame1.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame1.setVisible(true);
+
+                // Abre a segunda janela JFrame (Tela de Impressão - 02)
+                JFrame frame2 = new JFrame("Tela de Impressão - 02");
+                frame2.setContentPane(new PrintView().panelMain2);
+                frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame2.pack();
+                frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame2.setVisible(true);
             }
         });
     }
