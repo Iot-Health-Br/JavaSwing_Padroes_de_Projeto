@@ -1,6 +1,6 @@
-package Controller;
+package Singleton.Controller;
 
-import Model.PrintModel;
+import Singleton.Model.PrintModel;
 
 import java.util.List;
 

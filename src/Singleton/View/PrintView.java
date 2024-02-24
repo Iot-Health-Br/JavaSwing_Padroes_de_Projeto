@@ -1,6 +1,6 @@
-package View;
+package Singleton.View;
 
-import Controller.PrintController;
+import Singleton.Controller.PrintController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -52,7 +52,7 @@ public class PrintView {
                     botaoImprimir.setEnabled(true);
                     botaoLimpar.setEnabled(false);
                     // Adiciona o diretório do arquivo hà fila de impressão
-                    // View => Controller ADD => Model ADD
+                    // Singleton.View => Singleton.Controller ADD => Singleton.Model ADD
                 }
             }
         });
@@ -76,7 +76,7 @@ public class PrintView {
                 }
 
                 //Para cada arquivo na fila de impressão, o método modelo.addElement(arquivo) adiciona o arquivo na lista.
-                // View => Controller GET => Model GET
+                // Singleton.View => Singleton.Controller GET => Singleton.Model GET
                 for (String arquivo : controlador.getFilaDeImpressao()) {
                     modelo.addElement(arquivo);
                 }

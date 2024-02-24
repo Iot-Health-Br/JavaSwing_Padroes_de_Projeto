@@ -1,14 +1,20 @@
 package Adapter.Model;
 
-public class TemperatureModel {
-    private TemperatureConverter converter;
+import javax.swing.*;
 
-    public TemperatureModel(TemperatureConverter converter) {
-        this.converter = converter;
+public class TempModel {
+    // Atributo da Temperatura
+    private double Celsius;
+
+    //Get e Set da Temperatura
+    public double getCelsius() {
+        return Celsius;
     }
 
-    public double convertTemperature(double temperature) {
-        return converter.convert(temperature);
+    public void setCelsius(double celsius) {
+        this.Celsius = celsius;
+        // Teste para ver se o dado está chegando no Modelo
+        JOptionPane.showMessageDialog(null, "Valor"+celsius);
     }
 }
 

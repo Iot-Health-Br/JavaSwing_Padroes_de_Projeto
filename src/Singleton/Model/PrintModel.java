@@ -1,4 +1,4 @@
-package Model;
+package Singleton.Model;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class PrintModel {
     }
 
     /* Este método adiciona um novo arquivo à fila de impressão.
-    * View ADD => Controller ADD => Model ADD*/
+    * Singleton.View ADD => Singleton.Controller ADD => Singleton.Model ADD*/
     public void adicionarNaFila(String arquivo) {
         // Add o arquivo a fila de impressão
         filaDeImpressao.add(arquivo);
