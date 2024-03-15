@@ -1,0 +1,34 @@
+package Iterator.Model;
+
+import javax.swing.*;
+import java.util.TreeSet;
+
+public class ModeloTree {
+    private TreeSet<String> tree;
+
+    public ModeloTree() {
+        this.tree = new TreeSet<>();
+    }
+
+    public void addWordTree(String word) {
+        boolean added = tree.add(word);
+        if (added) {
+            JOptionPane.showMessageDialog(null, "Palavra adicionada: " + word);
+        } else {
+            JOptionPane.showMessageDialog(null, "Palavra já existe: " + word);
+        }
+    }
+
+    public TreeSet<String> getTree() {
+        return tree;
+    }
+
+    // Método adicional para obter uma representação da árvore em uma String
+    public String getTreeList() {
+        StringBuilder builder = new StringBuilder();
+        for (String word : tree) {
+            builder.append(word).append("\n");
+        }
+        return builder.toString();
+    }
+}

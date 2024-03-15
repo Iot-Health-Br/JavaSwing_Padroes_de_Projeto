@@ -1,5 +1,9 @@
 package Iterator.Controller;
 
 public interface IController {
-    void addWord(String word);
+    void addWordHashMap(String palavra);
+    void addWordPilha(String palavra);
+    void addWordLista(String palavra);
+    void addWordVetor(String palavra);
+    void addWordTree(String palavra);
 }

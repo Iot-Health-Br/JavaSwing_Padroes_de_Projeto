@@ -8,7 +8,7 @@ import java.util.Map;
 public class Model {
     private Map<String, String> words = new HashMap<>();
 
-    public void addWord(String key, String word) {
+    public void addWordHashMap(String key, String word) {
         words.put(key, word);
         JOptionPane.showMessageDialog(null,"Palavra Digitada: "+word);
     }
