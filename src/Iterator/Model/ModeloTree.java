@@ -1,9 +1,12 @@
 package Iterator.Model;
 
+import Iterator.Iterator.IteratorInterface;
+
 import javax.swing.*;
+import java.util.Iterator;
 import java.util.TreeSet;
 
-public class ModeloTree {
+public class ModeloTree  implements IteratorInterface{
     private TreeSet<String> tree;
 
     public ModeloTree() {
@@ -12,9 +15,7 @@ public class ModeloTree {
 
     public void addWordTree(String word) {
         boolean added = tree.add(word);
-        if (added) {
-            JOptionPane.showMessageDialog(null, "Palavra adicionada: " + word);
-        } else {
+        if (!added) {
             JOptionPane.showMessageDialog(null, "Palavra já existe: " + word);
         }
     }
@@ -30,5 +31,11 @@ public class ModeloTree {
             builder.append(word).append("\n");
         }
         return builder.toString();
+    }
+
+    @Override
+    public Iterator<String> createIterator() {
+        // Retorna um iterador para os elementos do TreeSet
+        return tree.iterator();
     }
 }

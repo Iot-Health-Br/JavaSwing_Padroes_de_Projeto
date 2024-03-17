@@ -2,21 +2,19 @@ package Iterator.View;
 
 import Iterator.Controller.IController;
 import Iterator.Controller.Controller;
-import Iterator.Iterator.CollectionAdapter;
-import Iterator.Iterator.PilhaIterator;
+import Iterator.Iterator.UniversalIterator;
 import Iterator.Model.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 
 public class WriteView {
     private JPanel panelMain;
     private JFormattedTextField In_txt;
-    private JButton Btn_Save;
+    private JButton Btn_SaveHashMap;
     private JButton Btn_clear;
-    private JButton Btn_Print;
+    private JButton Btn_PrintHashMap;
     private JTextArea Out_txt;
     private JButton Btn_SaveLista;
     private JButton Btn_PrintLista;
@@ -29,14 +27,13 @@ public class WriteView {
 
     public WriteView() {
 
-        Model model = new Model();
-        IController controller = new Controller(model);
+        //HashMap
+        ModelHashMap modelHashMap = new ModelHashMap();
+        IController controllerHashMap = new Controller(modelHashMap);
 
         //Pilha
         ModeloPilha modelPilha = new ModeloPilha();
         IController controllerPilha = new Controller(modelPilha);
-
-        PilhaIterator pilhaIterator = new PilhaIterator(modelPilha);
 
         //Lista
         ModeloLista modelLista = new ModeloLista();
@@ -50,20 +47,19 @@ public class WriteView {
         ModeloTree modeloTree = new ModeloTree();
         IController controllerTree = new Controller(modeloTree);
 
-        Btn_Save.addActionListener(new ActionListener() {
+        Btn_SaveHashMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String word = In_txt.getText();
-                controller.addWordHashMap(word);
+                controllerHashMap.addWordHashMap(word);
+                In_txt.setText("");
             }
         });
-        Btn_Print.addActionListener(new ActionListener() {
+        Btn_PrintHashMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Iterator<String> iterator = model.getWordsIterator();
-                while (iterator.hasNext()) {
-                    Out_txt.append(iterator.next() + "\n");
-                }
+                Out_txt.setText("");
+                UniversalIterator.iterateAndPrint(modelHashMap, Out_txt);
             }
         });
         Btn_clear.addActionListener(new ActionListener() {
@@ -87,14 +83,10 @@ public class WriteView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Out_txt.setText("");
-
-                // Iterando sobre a Pilha
-                Out_txt.append("Iterando sobre Pilha:\n");
-                while (pilhaIterator.hasNext()) {
-                    Out_txt.append(pilhaIterator.next() + "\n");
-                }
+                UniversalIterator.iterateAndPrint(modelPilha, Out_txt);
             }
         });
+
 
         //Botão Lista
         Btn_SaveLista.addActionListener(new ActionListener() {
@@ -108,12 +100,10 @@ public class WriteView {
         Btn_PrintLista.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Iterator<?> listaIterator = CollectionAdapter.getIterator(modelLista.getLista());
-                while (listaIterator.hasNext()) {
-                    Out_txt.append(listaIterator.next()+ "\n");
-                }
+                UniversalIterator.iterateAndPrint(modelLista, Out_txt);
             }
         });
+
 
         //Botão Vetor
         Btn_SaveVetor.addActionListener(new ActionListener() {
@@ -127,12 +117,13 @@ public class WriteView {
         Btn_PrintVetor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Iterator<?> listaIterator = CollectionAdapter.getIterator(modeloVetor.getlistVetor());
-                while (listaIterator.hasNext()) {
-                    Out_txt.append(listaIterator.next()+ "\n");
-                }
+                Out_txt.setText("");
+                UniversalIterator.iterateAndPrint(modeloVetor, Out_txt);
             }
         });
+
+
+        //Botão Tree
         Btn_SaveTree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,7 +135,8 @@ public class WriteView {
         Btn_PrintTree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Out_txt.setText("");
+                UniversalIterator.iterateAndPrint(modeloTree, Out_txt);
             }
         });
     }

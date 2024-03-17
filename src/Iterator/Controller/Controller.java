@@ -3,14 +3,14 @@ package Iterator.Controller;
 import Iterator.Model.*;
 
 public class Controller implements IController {
-    private Model model;
+    private ModelHashMap modelHashMap;
     private ModeloPilha modelPilha;
     private ModeloLista modelLista;
     private ModeloVetor modelVetor;
     private ModeloTree modelTree;
 
-    public Controller(Model model) {
-        this.model = model;
+    public Controller(ModelHashMap modelHashMap) {
+        this.modelHashMap = modelHashMap;
     }
     public Controller(ModeloPilha modelPilha) {
         this.modelPilha = modelPilha;
@@ -29,7 +29,7 @@ public class Controller implements IController {
     @Override
     public void addWordHashMap(String word) {
         // Simplesmente adiciona a palavra ao modelo com uma chave que pode ser a própria palavra ou um identificador único.
-        model.addWordHashMap(word, word);}
+        modelHashMap.addWordHashMap(word, word);}
 
     ///Modelo Pilha
     @Override
@@ -46,7 +46,6 @@ public class Controller implements IController {
     public void addWordVetor(String word) {
         modelVetor.addWordVetor(word);
     }
-
     ///Modelo Tree
     @Override
     public void addWordTree(String word) {
