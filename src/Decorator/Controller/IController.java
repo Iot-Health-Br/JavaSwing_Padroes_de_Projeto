@@ -1,5 +1,5 @@
 package Decorator.Controller;
 
-public interface SanduicheComponent {
+public interface IController {
         String montar();
 }

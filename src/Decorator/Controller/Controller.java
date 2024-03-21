@@ -1,6 +1,6 @@
 package Decorator.Controller;
 
-public class SanduicheBasico implements SanduicheComponent {
+public class Controller implements IController {
     @Override
     public String montar() {
         return "Pão";
