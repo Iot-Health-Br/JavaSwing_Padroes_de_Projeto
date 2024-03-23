@@ -1,22 +1,62 @@
 package FactoryMethod.View;
 
+import FactoryMethod.Controller.Controller;
+import FactoryMethod.Controller.IController;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ViewNotebook {
     JPanel panelMain;
+    private JFormattedTextField Txt_Codigo;
+    private JFormattedTextField Txt_Descricao;
+    private JFormattedTextField Txt_PVenda;
+    private JFormattedTextField Txt_Modelo;
+    private JFormattedTextField Txt_RAM;
+    private JTextArea Out_txt;
+    private JButton Btn_Save;
+    private JButton Btn_Voltar;
+    private JFormattedTextField Txt_ROM;
+    private JFormattedTextField Txt_Processador;
+    private JFormattedTextField Txt_Marca;
+    private JFormattedTextField Txt_Tela;
+    private JFormattedTextField Txt_SO;
 
+
+    public ViewNotebook() {
+        IController controller = new Controller();
+        Btn_Save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String produtoInfo = controller.cadastrarProduto("Notebook",
+                        Txt_Codigo.getText(),
+                        Txt_Descricao.getText(),
+                        Txt_PVenda.getText(),
+                        Txt_Marca.getText(),
+                        Txt_Modelo.getText(),
+                        Txt_RAM.getText(),
+                        Txt_ROM.getText(),
+                        Txt_Processador.getText(),
+                        Txt_Tela.getText(),
+                        Txt_SO.getText());
+                Out_txt.setText(produtoInfo);
+            }
+        });
+        Btn_Voltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.showScreen(new ViewRegistration().panelMain, "Tela de Cadastro:");
+            }
+        });
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //new ViewPrint();
-                JFrame frame = new JFrame("Tela de Cadastro Notebook:");
-                frame.setContentPane(new ViewNotebook().panelMain);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                frame.setVisible(true);
+                ScreenManager.setupMainFrame("Tela de Cadastro Notebook:");
+                ScreenManager.showScreen(new ViewNotebook().panelMain, "Tela de Cadastro Notebook:");
             }
         });
     }

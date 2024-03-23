@@ -15,11 +15,12 @@ public class ViewCelular {
     private JFormattedTextField Txt_Marca;
     private JTextArea Out_txt;
     private JButton Btn_Save;
-    private JButton Btn_Limpar;
+    private JButton Btn_Voltar;
     private JFormattedTextField Txt_Memoria;
     private JFormattedTextField Txt_SO;
     private JFormattedTextField Txt_Tela;
     JPanel panelMain;
+    private JFrame currentFrame; // Atributo para armazenar a referência ao JFrame atual
 
     public ViewCelular() {
 
@@ -27,7 +28,6 @@ public class ViewCelular {
         Btn_Save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String produtoInfo = controller.cadastrarProduto("Celular",
                         Txt_Codigo.getText(),
                         Txt_Descricao.getText(),
@@ -40,20 +40,23 @@ public class ViewCelular {
                 Out_txt.setText(produtoInfo);
             }
         });
+
+        Btn_Voltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.showScreen(new ViewRegistration().panelMain, "Tela de Cadastro:");
+            }
+        });
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //new ViewPrint();
-                JFrame frame = new JFrame("Tela de Cadastro Celular:");
-                frame.setContentPane(new ViewCelular().panelMain);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                frame.setVisible(true);
+                ScreenManager.setupMainFrame("Tela de Cadastro Celular:");
+                ScreenManager.showScreen(new ViewCelular().panelMain, "Tela de Cadastro Celular:");
             }
         });
     }
+
 }

@@ -16,7 +16,7 @@ public class ViewBook {
     private JFormattedTextField Txt_Tradutor;
     private JTextArea Out_txt;
     private JButton Btn_Save;
-    private JButton Btn_Limpar;
+    private JButton Btn_Voltar;
     private JFormattedTextField Txt_Editora;
     private JFormattedTextField Txt_Ano;
     private JFormattedTextField Txt_Titulo;
@@ -38,19 +38,20 @@ public class ViewBook {
                 Out_txt.setText(produtoInfo);
             }
         });
+        Btn_Voltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.showScreen(new ViewRegistration().panelMain, "Tela de Cadastro:");
+            }
+        });
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //new ViewPrint();
-                JFrame frame = new JFrame("Tela de Cadastro:");
-                frame.setContentPane(new ViewBook().panelMain);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                frame.setVisible(true);
+                ScreenManager.setupMainFrame("Tela de Cadastro Livros:");
+                ScreenManager.showScreen(new ViewBook().panelMain, "Tela de Cadastro Livros:");
             }
         });
     }

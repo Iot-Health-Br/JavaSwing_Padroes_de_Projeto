@@ -136,12 +136,12 @@
               <text value="SALVAR"/>
             </properties>
           </component>
-          <component id="deecc" class="javax.swing.JButton" binding="Btn_Limpar">
+          <component id="deecc" class="javax.swing.JButton" binding="Btn_Voltar">
             <constraints>
               <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="LIMPAR"/>
+              <text value="VOLTAR"/>
             </properties>
           </component>
           <component id="d9364" class="javax.swing.JFormattedTextField" binding="Txt_Editora">
