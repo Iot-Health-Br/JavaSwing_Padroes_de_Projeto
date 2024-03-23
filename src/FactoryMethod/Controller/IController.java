@@ -1,6 +1,12 @@
 package FactoryMethod.Controller;
 
+/*public interface IController {
+    Produto cadastrarProduto(String tipoProduto, String... propriedades);
+}*/
+
 public interface IController {
-    String processarEscolhaPersonagem(String tipo);
+    String cadastrarProduto(String tipoProduto, String... propriedades);
 }
+
+
 
