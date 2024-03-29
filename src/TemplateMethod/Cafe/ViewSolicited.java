@@ -1,10 +1,6 @@
-package TemplateMethod;
+package TemplateMethod.Cafe;
 
-import TemplateMethod.Controller.Controller;
-import TemplateMethod.Controller.IController;
-import TemplateMethod.Model.CafeComLeite;
-import TemplateMethod.Model.CafePreto;
-import TemplateMethod.Model.PrepararCafe;
+import TemplateMethod.Cafe.Controller.Controller;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

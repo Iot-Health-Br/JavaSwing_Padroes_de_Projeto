@@ -1,4 +1,4 @@
-package TemplateMethod.Model;
+package TemplateMethod.Cafe.Model;
 
 public class CafeCappuccino extends PrepararCafe {
     @Override

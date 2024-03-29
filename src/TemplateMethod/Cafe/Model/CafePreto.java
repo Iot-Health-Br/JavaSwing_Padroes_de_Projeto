@@ -1,6 +1,4 @@
-package TemplateMethod.Model;
-
-import javax.swing.*;
+package TemplateMethod.Cafe.Model;
 
 public class CafePreto extends PrepararCafe {
     @Override

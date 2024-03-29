@@ -1,6 +1,8 @@
-package TemplateMethod.Controller;
+package TemplateMethod.Cafe.Controller;
 
-import TemplateMethod.Model.*;
+
+import TemplateMethod.Cafe.Model.*;
+
 import javax.swing.*;
 
 public class Controller implements IController {
@@ -13,7 +15,7 @@ public class Controller implements IController {
     public void processarEscolha(String escolha) {
         PrepararCafe cafe = null;
         if ("cafe".equals(escolha)) {
-            cafe = new CafePreto();} 
+            cafe = new CafePreto();}
         else if("leite com cafe".equals(escolha)){
             cafe = new CafeComLeite();}
         else if("Sem Açucar".equals(escolha)){

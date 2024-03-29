@@ -1,4 +1,4 @@
-package TemplateMethod.Model;
+package TemplateMethod.Cafe.Model;
 
 public abstract class PrepararCafe {
     StringBuilder resultado = new StringBuilder();
