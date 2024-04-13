@@ -1,4 +1,4 @@
-package Iterator.Controller;
+package Iterator.InputAndWrite.Controller;
 
 public interface IController {
     void addWordHashMap(String palavra);

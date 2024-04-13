@@ -1,6 +1,6 @@
-package Iterator.Model;
+package Iterator.ReadAndWrite.Model;
 
-import Iterator.Iterator.IteratorInterface;
+import Iterator.InputAndWrite.Iterator.IteratorInterface;
 
 import javax.swing.*;
 import java.util.Iterator;

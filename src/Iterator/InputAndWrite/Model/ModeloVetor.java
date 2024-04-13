@@ -1,10 +1,9 @@
-package Iterator.Model;
+package Iterator.InputAndWrite.Model;
 
-import Iterator.Iterator.IteratorInterface;
+import Iterator.InputAndWrite.Iterator.IteratorInterface;
 
 import javax.swing.*;
 import java.util.Iterator;
-import java.util.Queue;
 
 public class ModeloVetor implements IteratorInterface {
     private String[] items; // Array de String com 50 posições

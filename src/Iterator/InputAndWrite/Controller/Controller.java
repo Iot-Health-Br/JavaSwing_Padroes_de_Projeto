@@ -1,6 +1,6 @@
-package Iterator.Controller;
+package Iterator.InputAndWrite.Controller;
 
-import Iterator.Model.*;
+import Iterator.InputAndWrite.Model.*;
 
 public class Controller implements IController {
     private ModelHashMap modelHashMap;

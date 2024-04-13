@@ -1,8 +1,7 @@
-package Iterator.Model;
+package Iterator.InputAndWrite.Model;
 
-import Iterator.Iterator.IteratorInterface;
+import Iterator.InputAndWrite.Iterator.IteratorInterface;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

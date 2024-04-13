@@ -1,4 +1,4 @@
-package Iterator.Iterator;
+package Iterator.InputAndWrite.Iterator;
 
 import java.util.Iterator;
 

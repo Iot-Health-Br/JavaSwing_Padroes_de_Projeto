@@ -1,9 +1,9 @@
-package Iterator.View;
+package Iterator.InputAndWrite.View;
 
-import Iterator.Controller.IController;
-import Iterator.Controller.Controller;
-import Iterator.Iterator.UniversalIterator;
-import Iterator.Model.*;
+import Iterator.InputAndWrite.Controller.Controller;
+import Iterator.InputAndWrite.Controller.IController;
+import Iterator.InputAndWrite.Iterator.UniversalIterator;
+import Iterator.InputAndWrite.Model.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ public class WriteView {
     private JButton Btn_PrintPilha;
     private JButton Btn_SaveVetor;
     private JButton Btn_PrintVetor;
-    private JButton Btn_SaveTree;
+    private JButton Btn_LoadFromFile;
     private JButton Btn_PrintTree;
 
     public WriteView() {
@@ -124,7 +124,7 @@ public class WriteView {
 
 
         //Botão Tree
-        Btn_SaveTree.addActionListener(new ActionListener() {
+        Btn_LoadFromFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String word = In_txt.getText();
@@ -139,6 +139,7 @@ public class WriteView {
                 UniversalIterator.iterateAndPrint(modeloTree, Out_txt);
             }
         });
+
     }
 
 

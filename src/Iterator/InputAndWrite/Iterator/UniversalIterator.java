@@ -1,6 +1,5 @@
-package Iterator.Iterator;
+package Iterator.InputAndWrite.Iterator;
 
-import Iterator.Iterator.IteratorInterface;
 import javax.swing.JTextArea;
 
 public class UniversalIterator {
